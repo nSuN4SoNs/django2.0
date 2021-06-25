@@ -12,7 +12,7 @@ class Car(models.Model):
         related_name="cars"
     )
     car_colour = models.ForeignKey(
-        "car.CarColour",
+        "car.Colour",
         on_delete=models.SET_NULL,
         null=True,
         related_name="cars"
@@ -35,7 +35,7 @@ class Car(models.Model):
         return reverse('car-detail', kwargs={'pk' : self.pk})
 
     class Meta:
-        ordering = ["car_model, car_colour"]
+        ordering = ["car_model", "car_colour"]
 
 class CarModel(models.Model):
 
