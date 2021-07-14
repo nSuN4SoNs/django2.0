@@ -8,4 +8,4 @@ class CarForm(forms.ModelForm):
 
     class Meta:
         model = Car
-        fields = ["name"]
+        fields = '__all__'

@@ -3,6 +3,12 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from car.models import Car
 from car.forms import CarForm
+
+from car.models import CarModel
+#from car.forms import
+from car.models import Company
+#from car.forms import
+
 from django.views.generic.edit import CreateView
 # Create your views here.
 
@@ -55,3 +61,73 @@ class CarCreateView(CreateView):
 #         "car":car
 #     }
 #     return render(request,"car.html", context)
+
+class CarModelListView(ListView):
+
+    template_name = "car_model_list.html"
+
+    model = CarModel
+    paginate_by = 10
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context.update({
+            "title":"List of car models",
+            "list_len": len(context["car_model_list"])
+            })
+        return context
+
+
+class CarModelDetailView(DetailView):
+    """docstring for CarModelDetailView."""
+    template_name = "car_model.html"
+    model = CarModel
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+
+
+class CarModelCreateView(CreateView):
+
+    template_name = "car_model_create.html"
+
+    model = CarModel
+    #form_class = CarForm
+
+##############################################################################################################################################
+##############################################################################################################################################
+##############################################################################################################################################
+
+class CompanyListView(ListView):
+
+    template_name = "company_list.html"
+
+    model = Company
+    paginate_by = 10
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context.update({
+            "title":"List of companies",
+            "list_len": len(context["company_list"])
+            })
+        return context
+
+
+class CompanyDetailView(DetailView):
+    """docstring for CompanyDetailView."""
+    template_name = "company.html"
+    model = Company
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+
+
+class CompanyCreateView(CreateView):
+
+    template_name = "company_create.html"
+
+    model = Company
+    #form_class = CarForm

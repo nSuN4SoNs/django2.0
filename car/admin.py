@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Car, CarModel, Company, Colour
+from .models import Car, CarModel, Company, Colour, Rlsdate, Kind
 # Register your models here.
 @admin.register(Car)
 class CarAdmin(admin.ModelAdmin):
@@ -8,7 +8,9 @@ class CarAdmin(admin.ModelAdmin):
         "vin_number",
         "car_model",
         "company",
-        "colour"
+        "colour",
+        "rlsdate",
+        "kind"
     ]
     fieldsets = (
         (None, {
@@ -17,7 +19,7 @@ class CarAdmin(admin.ModelAdmin):
             )
         }),
         ('Advanced options', {
-            'fields': ("car_model", "company", "colour"),
+            'fields': ("car_model", "company", "colour", "rlsdate", "kind"),
         }),
     )
     readonly_fields = [
@@ -44,6 +46,18 @@ class CompanyAdmin(admin.ModelAdmin):
 
 @admin.register(Colour)
 class ColourAdmin(admin.ModelAdmin):
+    list_display = [
+        "name"
+    ]
+
+@admin.register(Rlsdate)
+class RlsdateAdmin(admin.ModelAdmin):
+    list_display = [
+        "name"
+    ]
+
+@admin.register(Kind)
+class KindAdmin(admin.ModelAdmin):
     list_display = [
         "name"
     ]
