@@ -14,8 +14,8 @@ class Galaxy(models.Model):
     def __str__(self):
         return f"Name:{self.name} X:{self.size_x} Y:{self.size_y}"
 
-    class Meta:
-        ordering = ["galaxy_star-system", "galaxy_star", "galaxy_planet"]
+    # class Meta:
+    #     ordering = ["galaxy_star-system", "galaxy_star", "galaxy_planet"]
 
 
 class StarSystem(models.Model):
